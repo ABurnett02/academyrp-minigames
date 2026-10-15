@@ -13,12 +13,9 @@ const bundledGames = [
     resourceDirectory: 'boii_minigames',
     noticeFile: 'LICENSE',
   },
-  {
-    id: 'eye',
-    resourceDirectory: 'eye_minigames',
-    noticeFile: 'BUNDLED-NOTICE.md',
-  },
 ];
+
+await rm(resolve(publicDirectory, 'eye'), { recursive: true, force: true });
 
 for (const game of bundledGames) {
   const destinationDirectory = resolve(publicDirectory, game.id);

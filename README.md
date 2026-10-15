@@ -8,12 +8,11 @@ provides a browser practice catalog:
 - [Pure Minigames](./pure-minigames/) — Number Counter.
 - [BOII Minigames](./boii_minigames/) — ten practice games, distributed with
   the upstream GPL-3.0 license and notices.
-- [Ay-eye Minigames](./eye_minigames/) — bundled upstream resource and 70-game
-  browser practice integration, included with maintainer-confirmed permission.
-  See its [bundle notice](./eye_minigames/BUNDLED-NOTICE.md).
 
-The Pages site provides Number Counter and all 80 bundled BOII and Ay-eye
-browser minigames in one practice catalog.
+The Pages site provides Number Counter and all ten BOII browser minigames in
+one practice catalog. Ay-eye minigames are temporarily excluded pending legal
+documentation. The Number Counter practice screen also adapts its layout and
+touch controls for phone-sized screens.
 
 ## GitHub Pages
 

@@ -38,6 +38,8 @@
   margin-right: -1px;
   cursor: pointer;
   margin-top: -1px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .progress {
@@ -50,4 +52,20 @@
 .progressInner {
   height: 100%;
   transition: width 1s linear;
+}
+
+@media (max-width: 40rem) {
+  .buttonHolder {
+    width: 94%;
+    height: 92%;
+  }
+
+  .button {
+    margin: 0;
+    border-radius: 2px;
+  }
+
+  .progress {
+    min-height: 0.5rem;
+  }
 }

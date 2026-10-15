@@ -1,8 +1,11 @@
 .practice {
   min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: 2rem 1rem;
+  padding-top: max(2rem, env(safe-area-inset-top));
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
   color: #f5f5f5;
   background:
     radial-gradient(ellipse at top, rgba(73, 94, 113, 0.42), transparent 55%),
@@ -52,6 +55,7 @@
 
 .fields input {
   width: 100%;
+  min-height: 2.75rem;
   padding: 0.75rem 0.85rem;
   border: 1px solid #43515d;
   border-radius: 0.45rem;
@@ -68,6 +72,7 @@
 
 .startButton {
   width: 100%;
+  min-height: 3rem;
   padding: 0.85rem 1rem;
   border: 0;
   border-radius: 0.45rem;
@@ -99,6 +104,15 @@
 
 @media (max-width: 30rem) {
   .panel {
-    padding: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .panel h1 {
+    font-size: 1.5rem;
+  }
+
+  .fields {
+    gap: 0.75rem;
+    margin: 1.25rem 0;
   }
 }

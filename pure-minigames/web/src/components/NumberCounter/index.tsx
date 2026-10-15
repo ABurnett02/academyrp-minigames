@@ -240,7 +240,7 @@ const NumberCounter = () => {
                 color: theme.button.buttonText,
                 width: '100% !important',
                 height: '100% !important',
-                fontSize: '1.5rem',
+                fontSize: 'clamp(0.85rem, 4vw, 1.5rem)',
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.backgroundColor =
