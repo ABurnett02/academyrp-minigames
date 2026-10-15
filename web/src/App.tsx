@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { FormEvent, useMemo, useState } from 'react';
 import { debugData } from './utils/debugData';
 import { fetchNui } from './utils/fetchNui';
 import { useAppDistpatch, useAppSelector } from './store/store';
@@ -11,6 +11,7 @@ import { setFailedStart } from './store/features/failedSlice';
 import { setCurrentGame } from './store/features/currentGame';
 import { startGameData } from './types/startGame';
 import { isEnvBrowser } from './utils/misc';
+import style from './App.module.css';
 
 debugData([
   {
@@ -46,7 +47,7 @@ const App = () => {
       {
         failed: 'Failed.',
         loadingNextGame: 'Loading Next Game...',
-        wrongOrder: 'Wrong Order.',
+        wrongNumber: 'Wrong Order.',
         tooSlow: 'Too Slow.',
         loadingDevice: 'Loading Device...',
       }
@@ -84,45 +85,88 @@ const App = () => {
   return (
     <>
       {!numberCounter.showGame && isEnvBrowser() && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            flexDirection: 'column',
-            gap: '0.5rem',
-          }}>
-          <label htmlFor='totalNo'>Total Number</label>
-          <input type='number' id='fname' name='totalNo' placeholder='12' />
-          <label htmlFor='seconds'>Seconds</label>
-          <input type='number' id='fname' name='seconds' placeholder='15' />
-          <label htmlFor='ttcn'>Times To Change Numbers</label>
-          <input type='number' id='fname' name='ttcn' placeholder='1' />
-          <label htmlFor='aog'>Amount of Games</label>
-          <input type='number' id='fname' name='aog' placeholder='2' />
-          <label htmlFor='iba'>Increment By Amount</label>
-          <input type='number' id='fname' name='iba' placeholder='0' />
-          <button
-            onClick={(e) => {
-              console.log('click', e);
-            }}>
-            Start Game
-          </button>
-          {/* <button
-            onClick={() => {
+        <main className={style.practice}>
+          <form
+            className={style.panel}
+            onSubmit={(event: FormEvent<HTMLFormElement>) => {
+              event.preventDefault();
+              const formData = new FormData(event.currentTarget);
               startGame({
                 game: 'numberCounter',
-                totalNumbers: 12,
-                seconds: 20,
-                timesToChangeNumbers: 2,
-                amountOfGames: 2,
-                incrementByAmount: 0,
+                totalNumbers: Number(formData.get('totalNumbers')),
+                seconds: Number(formData.get('seconds')),
+                timesToChangeNumbers: Number(
+                  formData.get('timesToChangeNumbers')
+                ),
+                amountOfGames: Number(formData.get('amountOfGames')),
+                incrementByAmount: Number(
+                  formData.get('incrementByAmount')
+                ),
               });
             }}>
-            Start Game
-          </button> */}
-        </div>
+            <p className={style.eyebrow}>LOCAL PRACTICE</p>
+            <h1>Number Counter</h1>
+            <p className={style.description}>
+              Choose your round settings, then start practicing.
+            </p>
+            <div className={style.fields}>
+              <label>
+                Numbers in the grid
+                <input
+                  type='number'
+                  name='totalNumbers'
+                  min='2'
+                  max='100'
+                  defaultValue='12'
+                  required
+                />
+              </label>
+              <label>
+                Time limit (seconds)
+                <input
+                  type='number'
+                  name='seconds'
+                  min='1'
+                  defaultValue='20'
+                  required
+                />
+              </label>
+              <label>
+                Number changes
+                <input
+                  type='number'
+                  name='timesToChangeNumbers'
+                  min='1'
+                  defaultValue='2'
+                  required
+                />
+              </label>
+              <label>
+                Rounds to win
+                <input
+                  type='number'
+                  name='amountOfGames'
+                  min='1'
+                  defaultValue='2'
+                  required
+                />
+              </label>
+              <label>
+                Add numbers after each round
+                <input
+                  type='number'
+                  name='incrementByAmount'
+                  min='0'
+                  defaultValue='0'
+                  required
+                />
+              </label>
+            </div>
+            <button className={style.startButton} type='submit'>
+              Start practice
+            </button>
+          </form>
+        </main>
       )}
       {numberCounter.showGame && <GameHousing />}
     </>
