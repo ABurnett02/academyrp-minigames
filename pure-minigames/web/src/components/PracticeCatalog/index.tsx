@@ -181,6 +181,103 @@ const PracticeCatalog = ({
 
     <section className={style.external}>
       <div>
+        <h2>NP-Minigames hosted games</h2>
+        <p>These games open on the third-party NP-Minigames website.</p>
+      </div>
+      <div className={style.externalLinks}>
+        <a
+          href='https://nopixel-minigames.vercel.app/word-memory-4-0'
+          target='_blank'
+          rel='noreferrer'>
+          Word Memory (4.0)
+        </a>
+        <a
+          href='https://nopixel-minigames.vercel.app/laptop-4-0'
+          target='_blank'
+          rel='noreferrer'>
+          Laptop - Terminal (4.0)
+        </a>
+        <a
+          href='https://nopixel-minigames.vercel.app/pincracker-4-0'
+          target='_blank'
+          rel='noreferrer'>
+          Fingerprint Scanner - PinCracker (4.0)
+        </a>
+        <a
+          href='https://github.com/sdnitrogen/np-minigames'
+          target='_blank'
+          rel='noreferrer'>
+          Project source (no license file found)
+        </a>
+      </div>
+    </section>
+
+    <section className={style.external}>
+      <div>
+        <h2>Heist hack practice links</h2>
+        <p>
+          These independent practice sites open in a new tab. The NoPixel Wiki
+          says using these sites while playing on the NoPixel server is
+          considered cheating.
+        </p>
+      </div>
+      <div className={style.externalLinks}>
+        <a
+          href='https://jesper-hustad.github.io/NoPixel-minigame/index'
+          target='_blank'
+          rel='noreferrer'>
+          Laptop Hack
+        </a>
+        <a
+          href='https://sharkiller.ddns.net/nopixel_minigame/thermite/'
+          target='_blank'
+          rel='noreferrer'>
+          Thermite
+        </a>
+        <a
+          href='https://ceoshikhar.github.io/gta5-var-heist-hack/'
+          target='_blank'
+          rel='noreferrer'>
+          VAR
+        </a>
+        <a
+          href='https://sharkiller.ddns.net/nopixel_minigame/casino_generators/'
+          target='_blank'
+          rel='noreferrer'>
+          USB / Hopscotch
+        </a>
+        <a
+          href='https://www.logicgamesonline.com/lightsout/'
+          target='_blank'
+          rel='noreferrer'>
+          Lights Out
+        </a>
+        <a
+          href='https://sharkiller.ddns.net/nopixel_minigame/hackingdevice/'
+          target='_blank'
+          rel='noreferrer'>
+          Security System Hacking Device
+        </a>
+      </div>
+      <p className={style.attribution}>
+        <a
+          href='https://nopixel.fandom.com/wiki/Heist_Hacks'
+          target='_blank'
+          rel='noreferrer'>
+          Link list and practice-use warning: NoPixel Wiki
+        </a>
+      </p>
+    </section>
+
+    <p className={style.attribution}>
+      External links go to independently operated websites. This project does
+      not host, embed, or copy their games, code, or assets. Their owners retain
+      their rights; links are not an endorsement or permission to reuse their
+      content. We have not verified licensing for every destination.
+    </p>
+
+    <section className={style.external}>
+      <div>
         <h2>Upstream projects</h2>
         <p>View the original resources and project information.</p>
       </div>

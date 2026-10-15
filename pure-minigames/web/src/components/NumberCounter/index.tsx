@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppDistpatch, useAppSelector } from '../../store/store';
 import style from './index.module.css';
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useMemo, useState } from 'react';
+import { CSSProperties, useEffect, useMemo, useState } from 'react';
 import ProgressBar from '../ProgressBar';
 import Failed from '../Failed';
 import { setFailed, setFailedReason } from '../../store/features/failedSlice';
@@ -61,6 +61,9 @@ const NumberCounter = () => {
   const gridLayout = isSquare
     ? [lastTwoDigits[1], lastTwoDigits[1]]
     : [lastTwoDigits[1], lastTwoDigits[0]];
+  const compactGridColumns =
+    totalNumbers <= 40 ? Math.min(3, gridLayout[1]) : gridLayout[1];
+  const compactGridRows = Math.ceil(totalNumbers / compactGridColumns);
 
   useMemo(() => {
     const numbersToSet = Array.from(Array(totalNumbers).keys());
@@ -221,11 +224,15 @@ const NumberCounter = () => {
         {isSuccess && <Success />}
         <div
           className={style.buttonHolder}
+          data-compact-remainder={totalNumbers % compactGridColumns}
           style={{
-            gridTemplateColumns: `repeat(${gridLayout[1]}, 1fr)`,
-            gridTemplateRows: `repeat(${gridLayout[0]}, 1fr)`,
+            '--desktop-grid-columns': gridLayout[1],
+            '--desktop-grid-rows': Math.ceil(totalNumbers / gridLayout[1]),
+            '--compact-grid-columns': compactGridColumns,
+            '--compact-grid-rows': compactGridRows,
+            '--compact-balanced-row': Math.max(1, compactGridRows - 1),
             opacity: isFinished ? 0.045 : 1,
-          }}>
+          } as CSSProperties}>
           {numberCounter.numbers.map((i) => (
             <div
               key={i}

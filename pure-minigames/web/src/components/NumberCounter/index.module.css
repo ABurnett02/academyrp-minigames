@@ -28,6 +28,12 @@
   width: 90%;
   height: 90%;
   display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(
+    var(--desktop-grid-columns),
+    minmax(0, 1fr)
+  );
+  grid-template-rows: repeat(var(--desktop-grid-rows), minmax(0, 1fr));
 }
 
 .button {
@@ -58,6 +64,36 @@
   .buttonHolder {
     width: 94%;
     height: 92%;
+    grid-template-columns: repeat(var(--compact-grid-columns), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--compact-grid-rows), minmax(0, 1fr));
+  }
+
+  .buttonHolder[data-compact-remainder='1'] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .buttonHolder[data-compact-remainder='1'] > .button {
+    grid-column: span 2;
+  }
+
+  .buttonHolder[data-compact-remainder='1'] > .button:nth-last-child(4) {
+    grid-row: var(--compact-balanced-row);
+    grid-column: 2 / span 2;
+  }
+
+  .buttonHolder[data-compact-remainder='1'] > .button:nth-last-child(3) {
+    grid-row: var(--compact-balanced-row);
+    grid-column: 4 / span 2;
+  }
+
+  .buttonHolder[data-compact-remainder='1'] > .button:nth-last-child(2) {
+    grid-row: var(--compact-grid-rows);
+    grid-column: 2 / span 2;
+  }
+
+  .buttonHolder[data-compact-remainder='1'] > .button:last-child {
+    grid-row: var(--compact-grid-rows);
+    grid-column: 4 / span 2;
   }
 
   .button {

@@ -9,6 +9,9 @@ import Loading from '../Loading';
 const GameHousing = () => {
   const theme = useAppSelector((state) => state.config.theme);
   const language = useAppSelector((state) => state.config.language);
+  const totalNumbers = useAppSelector(
+    (state) => state.numberCounter.totalNumbers
+  );
   const [loading, setLoading] = useState<boolean>(true);
 
   useMemo(() => {
@@ -21,6 +24,7 @@ const GameHousing = () => {
     <div className={style.container}>
       <div
         className={style.housing}
+        data-large-grid={totalNumbers >= 40}
         style={{
           backgroundColor: theme.background,
         }}>
