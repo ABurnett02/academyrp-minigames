@@ -1,0 +1,149 @@
+.page {
+  min-height: 100vh;
+  padding: 3rem max(1.25rem, calc((100vw - 72rem) / 2));
+  color: #f5f5f5;
+  background:
+    radial-gradient(ellipse at top, rgba(73, 94, 113, 0.42), transparent 55%),
+    #111820;
+}
+
+.header {
+  max-width: 45rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  margin-bottom: 0.65rem;
+  color: #91c5e8;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.intro,
+.external p {
+  margin-top: 0.6rem;
+  color: #bdc7cf;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.section {
+  max-width: 72rem;
+  margin: 0 auto 2.5rem;
+}
+
+.section h2,
+.external h2 {
+  font-size: 1.15rem;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0.85rem;
+}
+
+.card {
+  display: flex;
+  min-height: 9rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.8rem;
+  color: inherit;
+  background: rgba(25, 34, 43, 0.94);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 150ms ease,
+    transform 150ms ease,
+    background 150ms ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-2px);
+  border-color: #91c5e8;
+  background: #202e3b;
+}
+
+.cardTitle {
+  font-size: 0.98rem;
+}
+
+.cardDescription {
+  margin-top: 0.55rem;
+  color: #bdc7cf;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.cardAction {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  color: #91c5e8;
+  font-size: 0.72rem;
+}
+
+.sourceLink,
+.externalLinks a {
+  color: #91c5e8;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.sourceLink:hover,
+.externalLinks a:hover {
+  text-decoration: underline;
+}
+
+.external {
+  display: flex;
+  max-width: 72rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.8rem;
+  background: rgba(25, 34, 43, 0.7);
+}
+
+.external p {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+}
+
+.externalLinks {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .page {
+    padding-top: 2rem;
+  }
+
+  .external {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,2 +1,4 @@
 .idea
 web/node_modules/
+/pure-minigames/web/node_modules/
+/pure-minigames/web/public/games/boii/

@@ -1,56 +1,30 @@
-# pure-minigames
+# FiveM Minigame Practice
 
-A repo filled with minigames the team has worked on
+[Open the practice website](https://aburnett02.github.io/academyrp-minigames/)
 
-This utilises the project-error boilerplate [here](https://github.com/project-error/fivem-react-boilerplate-lua/tree/master)
+This repository groups the minigame resources into their own folders and
+provides a browser practice catalog:
 
-Current minigames:
+- [Pure Minigames](./pure-minigames/) — Number Counter.
+- [BOII Minigames](./boii_minigames/) — ten practice games, distributed with
+  the upstream GPL-3.0 license and notices.
+- [Ay-eye Minigames](./eye_minigames/) — upstream links only; its repository
+  does not provide a license permitting source redistribution.
 
-## Number Counter
+The Pages site currently practices Number Counter and the BOII minigames in a
+browser. The Ay-eye links open its upstream preview and repository. FiveM
+resource names or source folders are not automatically playable in a browser;
+each game needs a browser-compatible interface and any required runtime
+behavior.
 
-This is a game where the user has to click the numbers in the correct order from 1-x, and while they are clicking the numbers are randomising to make it harder
+## GitHub Pages
 
-### How to use:
+The workflow in `.github/workflows/deploy-pages.yml` builds the practice app
+and packages the BOII browser UI from its GPL-3.0 resource folder. Push to
+`main` or `master` to publish changes. Repository Pages must use **GitHub
+Actions** as its deployment source.
 
-    local gameData = {
-        totalNumbers = 15,
-        seconds = 20,
-        timesToChangeNumbers = 4,
-        amountOfGames = 2,
-        incrementByAmount = 5,
-    }
-    local result = exports['pure-minigames']:numberCounter(gameData)
+## Local practice
 
-Or
-
-    -- when you send no data it will use the config data
-    local result = exports['pure-minigames']:numberCounter()
-
-This awaits the result and returns true or false
-
-## Practice locally
-
-On Windows, install Node.js (which includes npm), then double-click
-`launch-practice.bat` to start the local web app and open the Number Counter
-practice page in your default browser. The first launch installs the web app
-dependencies if they are not already present, after asking for confirmation.
-Choose **Y** to download and install them. The success animation uses the
-current `lottie-react` package, which supports React 18 without legacy peer
-dependency resolution. Change the round settings on the page and select
-**Start practice** to play. Keep the server window open while practicing;
-close it to stop the local server. Each launch stops any process using local
-port 5173 before starting a fresh server; save work in any app using that port
-before launching.
-
-## Publish the practice app with GitHub Pages
-
-Push this project to a GitHub repository on its `main` or `master` branch. In
-the repository, open **Settings > Pages** and set the build and deployment
-source to **GitHub Actions**. The included workflow installs the web app
-dependencies, builds `web/build`, and deploys it to Pages on each push; you can
-also run it manually from the **Actions** tab.
-
-The published site provides browser practice for the minigames implemented in
-this project. FiveM resource names alone do not include the resources'
-minigame logic or interfaces, so Pages cannot use them to discover or reproduce
-other servers' minigames.
+See [pure-minigames/README.md](./pure-minigames/README.md) for FiveM resource
+usage and the Windows local-practice launcher.
