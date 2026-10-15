@@ -8,19 +8,17 @@ provides a browser practice catalog:
 - [Pure Minigames](./pure-minigames/) — Number Counter.
 - [BOII Minigames](./boii_minigames/) — ten practice games, distributed with
   the upstream GPL-3.0 license and notices.
-- [Ay-eye Minigames](./eye_minigames/) — upstream links only; its repository
-  does not provide a license permitting source redistribution.
+- [Ay-eye Minigames](./eye_minigames/) — bundled upstream resource and 70-game
+  browser practice integration, included with maintainer-confirmed permission.
+  See its [bundle notice](./eye_minigames/BUNDLED-NOTICE.md).
 
-The Pages site currently practices Number Counter and the BOII minigames in a
-browser. The Ay-eye links open its upstream preview and repository. FiveM
-resource names or source folders are not automatically playable in a browser;
-each game needs a browser-compatible interface and any required runtime
-behavior.
+The Pages site provides Number Counter and all 80 bundled BOII and Ay-eye
+browser minigames in one practice catalog.
 
 ## GitHub Pages
 
 The workflow in `.github/workflows/deploy-pages.yml` builds the practice app
-and packages the BOII browser UI from its GPL-3.0 resource folder. Push to
+and packages the browser interfaces from both upstream resources. Push to
 `main` or `master` to publish changes. Repository Pages must use **GitHub
 Actions** as its deployment source.
 

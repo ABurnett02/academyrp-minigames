@@ -15,6 +15,7 @@ import PracticeCatalog, {
   BoiiGameId,
 } from './components/PracticeCatalog';
 import BoiiPracticeGame from './components/BoiiPracticeGame';
+import EyePracticeGame from './components/EyePracticeGame';
 import style from './App.module.css';
 
 debugData([
@@ -31,6 +32,7 @@ const App = () => {
   const [selectedPractice, setSelectedPractice] = useState<
     'numberCounter' | BoiiGameId | null
   >(null);
+  const [selectedEyeGame, setSelectedEyeGame] = useState<string | null>(null);
 
   useMemo(() => {
     const asyncConfig = async () => {
@@ -92,12 +94,18 @@ const App = () => {
   return (
     <>
       {!numberCounter.showGame && isEnvBrowser() && (
-        selectedPractice === null ? (
+        selectedEyeGame !== null ? (
+          <EyePracticeGame
+            gameId={selectedEyeGame}
+            onBack={() => setSelectedEyeGame(null)}
+          />
+        ) : selectedPractice === null ? (
           <PracticeCatalog
             onSelectNumberCounter={() =>
               setSelectedPractice('numberCounter')
             }
             onSelectBoiiGame={setSelectedPractice}
+            onSelectEyeGame={(gameId) => setSelectedEyeGame(gameId)}
           />
         ) : selectedPractice !== 'numberCounter' ? (
           <BoiiPracticeGame

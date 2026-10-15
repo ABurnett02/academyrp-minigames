@@ -1,24 +1,36 @@
-import { cp, copyFile, mkdir } from 'node:fs/promises';
+import { cp, copyFile, mkdir, rm } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const webDirectory = resolve(scriptDirectory, '..');
 const repositoryDirectory = resolve(webDirectory, '..', '..');
-const sourceDirectory = resolve(repositoryDirectory, 'boii_minigames', 'html');
-const destinationDirectory = resolve(
-  webDirectory,
-  'public',
-  'games',
-  'boii'
-);
+const publicDirectory = resolve(webDirectory, 'public', 'games');
 
-await mkdir(destinationDirectory, { recursive: true });
-await cp(sourceDirectory, destinationDirectory, {
-  recursive: true,
-  force: true,
-});
-await copyFile(
-  resolve(repositoryDirectory, 'boii_minigames', 'LICENSE'),
-  resolve(destinationDirectory, 'LICENSE')
-);
+const bundledGames = [
+  {
+    id: 'boii',
+    resourceDirectory: 'boii_minigames',
+    noticeFile: 'LICENSE',
+  },
+  {
+    id: 'eye',
+    resourceDirectory: 'eye_minigames',
+    noticeFile: 'BUNDLED-NOTICE.md',
+  },
+];
+
+for (const game of bundledGames) {
+  const destinationDirectory = resolve(publicDirectory, game.id);
+  await rm(destinationDirectory, { recursive: true, force: true });
+  await mkdir(destinationDirectory, { recursive: true });
+  await cp(
+    resolve(repositoryDirectory, game.resourceDirectory, 'html'),
+    destinationDirectory,
+    { recursive: true, force: true }
+  );
+  await copyFile(
+    resolve(repositoryDirectory, game.resourceDirectory, game.noticeFile),
+    resolve(destinationDirectory, game.noticeFile)
+  );
+}
